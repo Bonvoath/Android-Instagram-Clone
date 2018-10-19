@@ -42,10 +42,6 @@ import cambo.com.app.models.Photo;
 import cambo.com.app.models.Story;
 import cambo.com.app.models.UserAccountSettings;
 
-/**
- * Created by User on 5/28/2017.
- */
-
 public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadListener {
 
     private static final String TAG = "HomeFragment";
@@ -53,31 +49,22 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
     @Override
     public void onUpdate() {
         Log.d(TAG, "ElasticListView: updating list view...");
-
         getFollowing();
     }
-
 
     @Override
     public void onLoad() {
         Log.d(TAG, "ElasticListView: loading...");
-
-        // Notify load is done
         mListView.notifyLoaded();
     }
 
-
-    //vars
     private ArrayList<Photo> mPhotos;
     private ArrayList<Photo> mPaginatedPhotos;
     private ArrayList<String> mFollowing;
-    private int recursionIterator = 0;
-    //    private ListView mListView;
     private ElasticListView mListView;
     private MainFeedListAdapter adapter;
     private int resultsCount = 0;
     private ArrayList<UserAccountSettings> mUserAccountSettings;
-    //    private ArrayList<UserStories> mAllUserStories = new ArrayList<>();
     private JSONArray mMasterStoriesArray;
 
     private RecyclerView mRecyclerView;
@@ -88,11 +75,10 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-//        mListView = (ListView) view.findViewById(R.id.listView);
-        mListView = (ElasticListView) view.findViewById(R.id.listView);
+        mListView = view.findViewById(R.id.listView);
 
         initListViewRefresh();
-        getFollowing();
+        //getFollowing();
 
         return view;
     }
@@ -104,9 +90,7 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
                 .getLoadFooter().setLoadAction(LoadFooter.LoadAction.RELEASE_TO_LOAD);
         mListView.setOnUpdateListener(this)
                 .setOnLoadListener(this);
-//        mListView.requestUpdate();
     }
-
 
     private void getFriendsAccountSettings(){
         Log.d(TAG, "getFriendsAccountSettings: getting friends account settings.");
@@ -121,7 +105,7 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
 
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
+                public void onDataChange(@Nullable DataSnapshot dataSnapshot) {
 
 
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
@@ -157,7 +141,6 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
             });
         }
     }
-
 
     private void getFriendsStories(){
         Log.d(TAG, "getFriendsStories: getting stories of following.");
@@ -246,8 +229,6 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
 
     }
 
-
-
     private void initRecyclerView(){
         Log.d(TAG, "initRecyclerView: init recyclerview.");
         if(mRecyclerView == null){
@@ -302,14 +283,8 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
         mUserAccountSettings = new ArrayList<>();
     }
 
-    /**
-     //     * Retrieve all user id's that current user is following
-     //     */
     private void getFollowing() {
-        Log.d(TAG, "getFollowing: searching for following");
-
         clearAll();
-        //also add your own id to the list
         mFollowing.add(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         Query query = FirebaseDatabase.getInstance().getReference()
@@ -318,7 +293,7 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
                 ;
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@Nullable DataSnapshot dataSnapshot) {
                 for (DataSnapshot singleSnapshot : dataSnapshot.getChildren()) {
                     Log.d(TAG, "getFollowing: found user: " + singleSnapshot
                             .child(getString(R.string.field_user_id)).getValue());
@@ -333,7 +308,7 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@Nullable DatabaseError databaseError) {
 
             }
 
@@ -467,8 +442,6 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
             Log.e(TAG, "displayPhotos: NullPointerException:" + e.getMessage() );
         }
     }
-
-
 }
 
 

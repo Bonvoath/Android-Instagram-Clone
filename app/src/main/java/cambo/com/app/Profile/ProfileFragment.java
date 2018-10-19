@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -19,7 +20,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -28,16 +28,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import cambo.com.app.R;
-import cambo.com.app.Utils.BottomNavigationViewHelper;
 import cambo.com.app.Utils.FirebaseMethods;
 import cambo.com.app.Utils.GridImageAdapter;
 import cambo.com.app.Utils.UniversalImageLoader;
@@ -46,6 +43,7 @@ import cambo.com.app.models.Like;
 import cambo.com.app.models.Photo;
 import cambo.com.app.models.UserAccountSettings;
 import cambo.com.app.models.UserSettings;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by User on 6/29/2017.
@@ -79,7 +77,6 @@ public class ProfileFragment extends Fragment {
     private GridView gridView;
     private Toolbar toolbar;
     private ImageView profileMenu;
-    private BottomNavigationViewEx bottomNavigationView;
     private Context mContext;
 
 
@@ -105,7 +102,6 @@ public class ProfileFragment extends Fragment {
         gridView = (GridView) view.findViewById(R.id.gridView);
         toolbar = (Toolbar) view.findViewById(R.id.profileToolBar);
         profileMenu = (ImageView) view.findViewById(R.id.profileMenu);
-        bottomNavigationView = (BottomNavigationViewEx) view.findViewById(R.id.bottomNavViewBar);
         mContext = getActivity();
         mFirebaseMethods = new FirebaseMethods(getActivity());
         Log.d(TAG, "onCreateView: stared.");
@@ -338,11 +334,7 @@ public class ProfileFragment extends Fragment {
      */
     private void setupBottomNavigationView(){
         Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView");
-        BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationView);
-        BottomNavigationViewHelper.enableNavigation(mContext,getActivity() ,bottomNavigationView);
-        Menu menu = bottomNavigationView.getMenu();
-        MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
-        menuItem.setChecked(true);
+        //BottomNavigationView bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);
     }
 
       /*

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">InstagramClone</string>
+    <string name="app_name">CAM APP</string>
 
     <!-- fragment names -->
     <string name="edit_profile_fragment">Edit Profile</string>
@@ -10,7 +10,7 @@
     <string name="view_comments_fragment">View Comments</string>
 
     <!-- dialog names -->
-    <string name="confirm_password_dialog">ConfirmPaswordDialog</string>
+    <string name="confirm_password_dialog">ConfirmPasswordDialog</string>
 
     <!-- Firebase messages -->
     <string name="auth_failed">Failed to Authenticate</string>
@@ -130,4 +130,6 @@
     <string name="mcam_file_size_limit_reached">You\'ve reached the maximum file size!</string>
     <string name="mcam_image_preview_error_title">Image preview error</string>
     <string name="mcam_image_preview_error_message">Could not decode bitmap</string>
+    <string name="search">Search</string>
+    <string name="home">Home</string>
 </resources>

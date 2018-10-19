@@ -4,12 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -17,12 +17,14 @@ import android.widget.RelativeLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import cambo.com.app.Likes.LikesActivity;
 import cambo.com.app.Login.LoginActivity;
+import cambo.com.app.Profile.ProfileActivity;
 import cambo.com.app.R;
-import cambo.com.app.Utils.BottomNavigationViewHelper;
+import cambo.com.app.Search.SearchActivity;
+import cambo.com.app.Share.ShareActivity;
 import cambo.com.app.Utils.FirebaseMethods;
 import cambo.com.app.Utils.MainFeedListAdapter;
 import cambo.com.app.Utils.SectionsPagerAdapter;
@@ -74,9 +76,9 @@ public class HomeActivity extends AppCompatActivity implements
 
         setupFirebaseAuth();
 
-        //initImageLoader();
-        //setupBottomNavigationView();
-        //setupViewPager();
+        initImageLoader();
+        setupBottomNavigationView();
+        setupViewPager();
     }
 
     public void openNewStoryActivity(){
@@ -182,13 +184,45 @@ public class HomeActivity extends AppCompatActivity implements
      * BottomNavigationView setup
      */
     private void setupBottomNavigationView(){
-        Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView");
-        BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);
-        BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
-        BottomNavigationViewHelper.enableNavigation(mContext, this,bottomNavigationViewEx);
-        Menu menu = bottomNavigationViewEx.getMenu();
-        MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
-        menuItem.setChecked(true);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavViewBar);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.ic_house:
+                        Intent intent1 = new Intent(mContext, HomeActivity.class);//ACTIVITY_NUM = 0
+                        startActivity(intent1);
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                        break;
+
+                    case R.id.ic_search:
+                        Intent intent2  = new Intent(mContext, SearchActivity.class);//ACTIVITY_NUM = 1
+                        startActivity(intent2);
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                        break;
+
+                    case R.id.ic_circle:
+                        Intent intent3 = new Intent(mContext, ShareActivity.class);//ACTIVITY_NUM = 2
+                        startActivity(intent3);
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                        break;
+
+                    case R.id.ic_alert:
+                        Intent intent4 = new Intent(mContext, LikesActivity.class);//ACTIVITY_NUM = 3
+                        startActivity(intent4);
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                        break;
+
+                    case R.id.ic_android:
+                        Intent intent5 = new Intent(mContext, ProfileActivity.class);//ACTIVITY_NUM = 4
+                        startActivity(intent5);
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                        break;
+
+                }
+                return true;
+            }
+        });
     }
 
      /*
@@ -228,7 +262,7 @@ public class HomeActivity extends AppCompatActivity implements
     public void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
-        //mViewPager.setCurrentItem(HOME_FRAGMENT);
+        mViewPager.setCurrentItem(HOME_FRAGMENT);
         checkCurrentUser(mAuth.getCurrentUser());
     }
 
