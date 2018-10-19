@@ -78,7 +78,7 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
         mListView = view.findViewById(R.id.listView);
 
         initListViewRefresh();
-        //getFollowing();
+        getFollowing();
 
         return view;
     }
@@ -303,7 +303,6 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
                 }
 
                 getPhotos();
-//                getMyUserAccountSettings();
                 getFriendsAccountSettings();
             }
 
@@ -311,9 +310,7 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
             public void onCancelled(@Nullable DatabaseError databaseError) {
 
             }
-
         });
-
     }
 
     private void getPhotos(){
@@ -325,8 +322,7 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
                     .child(getActivity().getString(R.string.dbname_user_photos))
                     .child(mFollowing.get(i))
                     .orderByChild(getString(R.string.field_user_id))
-                    .equalTo(mFollowing.get(i))
-                    ;
+                    .equalTo(mFollowing.get(i));
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
