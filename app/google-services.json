@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "352531809002",
-    "firebase_url": "https://instagramclone3-b6678.firebaseio.com",
-    "project_id": "instagramclone3-b6678",
-    "storage_bucket": "instagramclone3-b6678.appspot.com"
+    "project_number": "667674236474",
+    "firebase_url": "https://socialclone-453fb.firebaseio.com",
+    "project_id": "socialclone-453fb",
+    "storage_bucket": "socialclone-453fb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:352531809002:android:d49c650ed5c2c559",
+        "mobilesdk_app_id": "1:667674236474:android:75d3955803a297b9",
         "android_client_info": {
-          "package_name": "tabian.com.instagramclone2"
+          "package_name": "cambo.com.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "352531809002-gi64mu16aovb40gf82b1fi2sen302e9h.apps.googleusercontent.com",
+          "client_id": "667674236474-3baqrn7nfc2102012f1vpmjcvgdnaaub.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "tabian.com.instagramclone2",
-            "certificate_hash": "a1282f8c2b490a54cc1d7bdcefea5c630f537950"
+            "package_name": "cambo.com.app",
+            "certificate_hash": "0c40d838b4853143818824d8af1949b4d59fb87f"
           }
         },
         {
-          "client_id": "352531809002-sm8t77fn6vf3177s6kig01tm0bd46clo.apps.googleusercontent.com",
+          "client_id": "667674236474-ot26b80ifbq56ms5kur97e0i680sac8i.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCJXKgHH5JH7ytTLDSSJ4IeE3iFl5AV7pw"
+          "current_key": "AIzaSyDhoOjdfMdiKLwgUwUYIU7uIU-swrSJvfU"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "352531809002-sm8t77fn6vf3177s6kig01tm0bd46clo.apps.googleusercontent.com",
+              "client_id": "667674236474-ot26b80ifbq56ms5kur97e0i680sac8i.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

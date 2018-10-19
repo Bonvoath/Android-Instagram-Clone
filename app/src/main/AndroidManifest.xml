@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="tabian.com.instagramclone2">
+          package="cambo.com.app">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.CAMERA"/>
@@ -21,20 +21,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Home.HomeActivity"
+            android:name="cambo.com.app.Home.HomeActivity"
             android:screenOrientation="portrait"
             android:launchMode="singleInstance">
 
         </activity>
-        <activity android:name=".Likes.LikesActivity"
+        <activity android:name="cambo.com.app.Likes.LikesActivity"
                   android:launchMode="singleInstance"/>
-        <activity android:name=".Profile.ProfileActivity"
+        <activity android:name="cambo.com.app.Profile.ProfileActivity"
                   android:launchMode="singleInstance"/>
-        <activity android:name=".Share.ShareActivity"
+        <activity android:name="cambo.com.app.Share.ShareActivity"
                   android:launchMode="singleInstance"/>
-        <activity android:name=".Share.NextActivity"
+        <activity android:name="cambo.com.app.Share.NextActivity"
                   android:launchMode="singleInstance"/>
-        <activity android:name=".Login.LoginActivity"
+        <activity android:name="cambo.com.app.Login.LoginActivity"
                   android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -42,24 +42,24 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Profile.AccountSettingsActivity"
+        <activity android:name="cambo.com.app.Profile.AccountSettingsActivity"
                   android:launchMode="singleInstance"/>
-        <activity android:name=".Login.RegisterActivity"
+        <activity android:name="cambo.com.app.Login.RegisterActivity"
                   android:launchMode="singleInstance"/>
-        <activity android:name=".opengl.OpenGLES10Activity"
+        <activity android:name="cambo.com.app.opengl.OpenGLES10Activity"
                   android:launchMode="singleInstance"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".opengl.NewStoryActivity"
+        <activity android:name="cambo.com.app.opengl.NewStoryActivity"
                   android:launchMode="singleInstance"
                   android:screenOrientation="portrait"/>
         <activity
-            android:name=".Search.SearchActivity"
+            android:name="cambo.com.app.Search.SearchActivity"
             android:windowSoftInputMode="adjustNothing"
             android:launchMode="singleInstance">
 
         </activity>
-        <activity android:name=".materialcamera.CaptureActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".materialcamera.CaptureActivity2" android:screenOrientation="portrait"/>
+        <activity android:name="cambo.com.app.materialcamera.CaptureActivity" android:screenOrientation="portrait"/>
+        <activity android:name="cambo.com.app.materialcamera.CaptureActivity2" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
